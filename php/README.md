@@ -1,5 +1,18 @@
 # NINX with php fpm
 
+Nginx with PHP 7.4 FPM on Port 80
+
+## docker-compose
+
+```yml
+  luya_web:
+    image: luyadev/luya-docker-nginx:php
+    ports:
+      - "8080:80" 
+    volumes:
+      - ./:/app
+```
+
 
 ## Testing
 
