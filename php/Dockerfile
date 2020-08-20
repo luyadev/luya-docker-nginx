@@ -1,12 +1,12 @@
 FROM ubuntu:20.04
-
+ENV TZ=Europe/Berlin
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get update
 
 RUN apt-get install -y php php-fpm php-mysqli php-json php-curl \
     php-xml php-intl php-dom \
-    php-mbstring php-gd php-zip php-pdo_sqlites
+    php-mbstring php-gd php-zip
 RUN apt-get install -y nginx supervisor curl nano
-RUN apt-get install -y locales
 
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY fpm-pool.conf /etc/php/7.4/fpm/pool.d/www.conf
